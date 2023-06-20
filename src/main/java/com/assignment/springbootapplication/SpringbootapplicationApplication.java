@@ -14,9 +14,4 @@ public class SpringbootapplicationApplication{
 
 		SpringApplication.run(SpringbootapplicationApplication.class, args);
 	}
-
-
-
-
-
 }
