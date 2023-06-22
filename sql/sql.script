@@ -4,3 +4,9 @@ CREATE TABLE userdetails (
   email VARCHAR2(255) NOT NULL,
   dob VARCHAR2(255) NOT NULL
 );
+CREATE TABLE addition_result (
+  id NUMBER PRIMARY KEY,
+  num1 NUMBER,
+  num2 NUMBER,
+  sum NUMBER
+);

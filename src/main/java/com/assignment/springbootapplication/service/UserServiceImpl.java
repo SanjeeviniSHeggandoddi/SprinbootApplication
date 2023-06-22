@@ -15,7 +15,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    private UserDetailsUtil userDetailsUtil;
+
     @Override
     public UserDetailsResponse getUserById(int id) {
         Optional<User> user = Optional.ofNullable(userRepository.findById(id).orElse(null));
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public UserDetailsResponse createUser(UserDetailsRequest userDetailsRequest) {
         User userDetails = UserDetailsUtil.toCreate(userDetailsRequest);
         User savedUser = userRepository.save(userDetails);
-        return userDetailsUtil.toResponse(savedUser);
+        return UserDetailsUtil.toResponse(savedUser);
     }
     @Override
     public List<User> findByNameContaining(String letter) {
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
             userDetails.setEmail(userDetailsRequest.getEmail());
             userDetails.setDob(userDetailsRequest.getDob());
             User updatedUser = userRepository.save(userDetails);
-            return userDetailsUtil.toResponse(updatedUser);
+            return UserDetailsUtil.toResponse(updatedUser);
         } else {
             throw new UserNotFoundException("User not found with ID: " + id);
         }
