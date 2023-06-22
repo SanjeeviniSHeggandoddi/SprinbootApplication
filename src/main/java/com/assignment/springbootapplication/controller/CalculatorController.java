@@ -27,5 +27,4 @@ public class CalculatorController {
         int result = calculatorServiceImpl.performSubtraction(num1, num2);
         return ResponseEntity.ok(result);
     }
-
 }
