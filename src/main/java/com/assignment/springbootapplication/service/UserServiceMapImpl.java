@@ -66,7 +66,6 @@ public class UserServiceMapImpl implements UserService {
             user.setDob(userDetailsRequest.getDob());
 
             return UserDetailsUtil.toResponse(user);
-
         }
         throw new UserNotFoundException("User not found with ID: " + id);
     }

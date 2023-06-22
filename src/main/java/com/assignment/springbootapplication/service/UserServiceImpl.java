@@ -24,22 +24,26 @@ public class UserServiceImpl implements UserService {
         }
         return UserDetailsUtil.toResponse(user);
     }
+
     @Override
     public UserDetailsResponse createUser(UserDetailsRequest userDetailsRequest) {
         User userDetails = UserDetailsUtil.toCreate(userDetailsRequest);
         User savedUser = userRepository.save(userDetails);
         return UserDetailsUtil.toResponse(savedUser);
     }
+
     @Override
     public List<User> findByNameContaining(String letter) {
         Optional<List<User>> usersOpt = userRepository.findByNameContaining(letter);
         return usersOpt.orElseThrow(() -> new UserNotFoundException("No users found "));
     }
+
     @Override
     public List<User> findByName(String name) {
         Optional<List<User>> usersOpt = userRepository.findByName(name);
         return usersOpt.orElseThrow(() -> new UserNotFoundException("No users found"));
     }
+
     @Override
     public UserDetailsResponse updateUser(int id, UserDetailsRequest userDetailsRequest) {
         Optional<User> userDetailsOpt = userRepository.findById(id);
@@ -54,6 +58,7 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFoundException("User not found with ID: " + id);
         }
     }
+
     @Override
     public void deleteUser(int id) {
         Optional<User> userDetailsOpt = userRepository.findById(id);

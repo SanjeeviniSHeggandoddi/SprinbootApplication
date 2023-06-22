@@ -3,7 +3,6 @@ package com.assignment.springbootapplication.service;
 import com.assignment.springbootapplication.entity.User;
 import com.assignment.springbootapplication.payload.request.UserDetailsRequest;
 import com.assignment.springbootapplication.payload.response.UserDetailsResponse;
-import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface UserService {

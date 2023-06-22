@@ -1,7 +1,6 @@
 package com.assignment.springbootapplication.payload.request;
 
 import lombok.Data;
-
 import java.util.Date;
 
 @Data
