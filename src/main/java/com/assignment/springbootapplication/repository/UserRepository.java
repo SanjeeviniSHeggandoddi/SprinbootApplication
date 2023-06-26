@@ -11,8 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-     @Query(value = "SELECT * FROM userdetails WHERE name LIKE '%:letter%'", nativeQuery = true)
-   // @Query(value = "SELECT * FROM userdetails WHERE INSTR(name, :letter) > 0", nativeQuery = true)//check the query replace with like
+    @Query(value="SELECT * FROM userdetails WHERE UPPER(name) LIKE '%' || UPPER(:letter) || '%'", nativeQuery=true)
     Optional<List<User>> findByNameContaining(@Param("letter") String letter);
 
     @Query("SELECT u FROM User u WHERE u.name = :name")
