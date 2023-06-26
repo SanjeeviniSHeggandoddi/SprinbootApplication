@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class CalculatorController {
-    private static final Logger log =LoggerFactory.getLogger(CalculatorController.class);
+    private static final Logger log = LoggerFactory.getLogger(CalculatorController.class);
     @Autowired
     private CalculatorServiceImpl calculatorServiceImpl;
 
