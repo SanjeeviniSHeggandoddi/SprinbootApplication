@@ -12,16 +12,17 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RequestMapping("/api/user-detail")
 @RestController
 public class UserController {
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     @Qualifier("userServiceImpl")
     private UserService userService;
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @GetMapping("fetch/{id}")
     public ResponseEntity<UserDetailsResponse> fetchById(@PathVariable("id") int id) {
@@ -45,13 +46,13 @@ public class UserController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-   @GetMapping("fetch/by-name/contains/{letter}")
-   public ResponseEntity<List<User>> findByNameContainingLetter(@PathVariable("letter") String letter) {
-       logger.info("Finding users by name containing letter: {}", letter);
-       List<User> users = userService.findByNameContaining(letter);
-       logger.info("Found {} users matching the search criteria", users.size());
-       return ResponseEntity.ok(users);
-   }
+    @GetMapping("fetch/by-name/contains/{letter}")
+    public ResponseEntity<List<User>> findByNameContainingLetter(@PathVariable("letter") String letter) {
+        logger.info("Finding users by name containing letter: {}", letter);
+        List<User> users = userService.findByNameContaining(letter);
+        logger.info("Found {} users matching the search criteria", users.size());
+        return ResponseEntity.ok(users);
+    }
 
     @GetMapping("fetch/by-name/{name}")
     public ResponseEntity<List<User>> fetchByName(@PathVariable("name") String name) {
@@ -67,7 +68,7 @@ public class UserController {
         try {
             UserDetailsResponse response = userService.updateUser(id, userDetailsRequest);
             logger.info("User with ID {} updated successfully", id);
-            return  ResponseEntity.ok(response);
+            return ResponseEntity.ok(response);
         } catch (UserNotFoundException e) {
             logger.warn("User not found for ID: {}", id);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
