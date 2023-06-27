@@ -15,7 +15,7 @@ public class SpringbootapplicationApplication{
 		System.out.println(userDetails1.hashCode());
 		System.out.println(userDetails2.hashCode());
 
-		User userDetails3=new UserBuilder().setId(1).setEmail("sanju123").setName("sanju").getUser();
-		System.out.println(userDetails3);
+		User userDetailsbuilder=new UserBuilder().setId(1).setEmail("sanju123").setName("sanju").getUser();
+		System.out.println(userDetailsbuilder);
 	}
 }
