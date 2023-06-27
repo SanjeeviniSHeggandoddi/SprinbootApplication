@@ -10,25 +10,25 @@ public class UserBuilder {
 
     public UserBuilder setId(int id) {
         this.id = id;
-        return  this;
+        return this;
     }
 
     public UserBuilder setEmail(String email) {
         this.email = email;
-        return  this;
+        return this;
     }
 
     public UserBuilder setDob(Date dob) {
         this.dob = dob;
-        return  this;
+        return this;
     }
 
     public UserBuilder setName(String name) {
         this.name = name;
-        return  this;
-    }
-    public User getUser(){
-        return new User(id,name,email,dob);
+        return this;
     }
 
+    public User getUser() {
+        return new User(id, name, email, dob);
+    }
 }
