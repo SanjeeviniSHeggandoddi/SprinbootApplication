@@ -2,6 +2,7 @@ package com.assignment.springbootapplication;
 
 import com.assignment.springbootapplication.entity.User;
 import com.assignment.springbootapplication.entity.UserBuilder;
+import com.assignment.springbootapplication.entity.UserDetailsSingleton;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,11 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringbootapplicationApplication{
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootapplicationApplication.class, args);
-		User userDetails1=new User();
-		User userDetails2=new User();
-
-		System.out.println(userDetails1.hashCode());
-		System.out.println(userDetails2.hashCode());
+		UserDetailsSingleton singleton1 = UserDetailsSingleton.getInstance();
+		UserDetailsSingleton singleton2 = UserDetailsSingleton.getInstance();
+		if (singleton1 == singleton2) {
+			System.out.println("Both objects are the same instance.");
+		}
 
 		User userDetails3builder=new UserBuilder().setId(1).setEmail("sanju123").setName("sanju").getUser();
 		System.out.println(userDetails3builder);
