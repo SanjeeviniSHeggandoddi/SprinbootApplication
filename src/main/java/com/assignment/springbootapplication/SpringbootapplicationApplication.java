@@ -13,7 +13,7 @@ public class SpringbootapplicationApplication{
 		UserDetailsSingleton singleton1 = UserDetailsSingleton.getInstance();
 		UserDetailsSingleton singleton2 = UserDetailsSingleton.getInstance();
 		if (singleton1 == singleton2) {
-			System.out.println("Both objects are the same instance.");
+			System.out.println("Both objects are  same instance.");//branch1 changes
 		}
 
 		User userDetails3builder=new UserBuilder().setId(1).setEmail("sanju123").setName("sanju").getUser();
