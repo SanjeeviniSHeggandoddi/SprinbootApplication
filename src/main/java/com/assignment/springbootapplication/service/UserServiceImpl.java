@@ -4,13 +4,14 @@ import com.assignment.springbootapplication.entity.User;
 import com.assignment.springbootapplication.exception.UserNotFoundException;
 import com.assignment.springbootapplication.payload.request.UserDetailsRequest;
 import com.assignment.springbootapplication.payload.response.UserDetailsResponse;
-import com.assignment.springbootapplication.procedure.StoredProcedureService;
 import com.assignment.springbootapplication.repository.UserRepository;
 import com.assignment.springbootapplication.util.UserDetailsUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDetailsResponse createUser(UserDetailsRequest userDetailsRequest) {
+    public UserDetailsResponse createUser( UserDetailsRequest userDetailsRequest) {
         logger.info("Creating user: {}", userDetailsRequest);
         User userDetails = UserDetailsUtil.toCreate(userDetailsRequest);
         User savedUser = userRepository.save(userDetails);

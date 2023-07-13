@@ -6,12 +6,16 @@ import java.util.Date;
 
 @Data
 public class UserDetailsResponse {
-    @JsonProperty(value = "user_id")
+
+    @JsonProperty(value = "userId")
     private int id;
-    @JsonProperty(value = "first_name")
+
+    @JsonProperty(value = "firstName")
     private String name;
-    @JsonProperty(value = "email_address")
+
+    @JsonProperty(value = "emailAddress")
     private String email;
-    @JsonProperty(value = "date_of_birth")
+
+    @JsonProperty(value = "dateOfBirth")
     private Date dob;
 }
